@@ -1,0 +1,42 @@
+require: rubocop-rspec
+AllCops:
+  Exclude:
+      - 'db/schema.rb'
+      - 'bin/*'
+
+Layout/EmptyLinesAroundBlockBody:
+  Enabled: false
+
+Layout/LeadingCommentSpace:
+  Enabled: false
+
+Layout/SpaceInsideBrackets:
+  Enabled: false
+
+Layout/SpaceInsideHashLiteralBraces:
+  Enabled: false
+
+Metrics/LineLength:
+  Max: 199
+
+RSpec/FilePath:
+  Enabled: false
+
+RSpec/HookArgument:
+  Enabled: false
+
+Style/BlockComments:
+  Enabled: false
+
+Style/Encoding:
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Style/NumericLiterals:
+  Enabled: false
+
+Style/StringLiterals:
+  Enabled: false
+

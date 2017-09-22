@@ -14,7 +14,7 @@ module CertifyActivityLog
     end
 
     def add_version_to_header(options)
-      version = CertifyActivityLog.configuration.notify_api_version
+      version = CertifyActivityLog.configuration.activity_api_version
       if options[:headers]
         options[:headers].merge!('Accept' => "application/sba.activity-api.v#{version}")
       else

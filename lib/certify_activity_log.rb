@@ -6,10 +6,6 @@ require "certify_activity_log/resources/activity"
 
 # the base CertifyActivityLog module that wraps all activity log calls
 module CertifyActivityLog
-  class << self
-    attr_accessor :configuration
-  end
-
   def self.configuration
     @configuration ||= Configuration.new
   end

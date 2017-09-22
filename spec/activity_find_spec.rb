@@ -2,10 +2,10 @@ require "spec_helper"
 
 #rubocop:disable Style/BracesAroundHashParameters, Metrics/BlockLength
 RSpec.describe CertifyActivityLog do
-  describe "get activities operations using where" do
+  describe "get activities operations using find" do
     context "for getting activities" do
       let(:mock) { ActivitySpecHelper.mock_activities_sym }
-      let(:activities) { CertifyActivityLog::Activity.where({recipient_id: 1}) }
+      let(:activities) { CertifyActivityLog::Activity.find({recipient_id: 1}) }
       let(:body) { activities[:body] }
 
       before do
@@ -26,7 +26,7 @@ RSpec.describe CertifyActivityLog do
     end
 
     context "with no params" do
-      let(:activities) { CertifyActivityLog::Activity.where }
+      let(:activities) { CertifyActivityLog::Activity.find }
       let(:body) { activities[:body] }
 
       it "will return an error message" do
@@ -38,7 +38,7 @@ RSpec.describe CertifyActivityLog do
     end
 
     context "with bad parameters" do
-      let(:activities) { CertifyActivityLog::Activity.where({foo: 'bar'}) }
+      let(:activities) { CertifyActivityLog::Activity.find({foo: 'bar'}) }
       let(:body) { activities[:body] }
 
       it "will return an error message when a bad parameter is sent" do
@@ -53,7 +53,7 @@ RSpec.describe CertifyActivityLog do
     # this will work if the API is disconnected, but I can't figure out how to
     # fake the Excon connection to force it to fail in a test env.
     context "with api not found" do
-      let(:activities) { CertifyActivityLog::Activity.where({id: 1}) }
+      let(:activities) { CertifyActivityLog::Activity.find({id: 1}) }
       let(:error) { described_class.service_unavailable 'Excon::Error::Socket' }
 
       before do

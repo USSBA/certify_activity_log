@@ -47,7 +47,7 @@ Set the activity log API URL in your apps `config/initializers` folder, you prob
 ```
 CertifyActivityLog.configure do |config|
   config.api_url = "http://localhost:3005"
-  config.activity_log_api_version = 1
+  config.activity_api_version = 1
 end
 ```
 

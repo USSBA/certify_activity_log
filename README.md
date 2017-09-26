@@ -47,15 +47,15 @@ Set the activity log API URL in your apps `config/initializers` folder, you prob
 ```
 CertifyActivityLog.configure do |config|
   config.api_url = "http://localhost:3005"
-  config.activity_log_api_version = 1
+  config.activity_api_version = 1
 end
 ```
 
 ### Activity Log
 
 #### Finding (GET) Activity Log Entries
-* calling `CertifyActivityLog::Activity.find({application_id: 1})` will query for all activity log entries for application_id = 1
-* Calling the `.find` method with empty or invalid parameters will result in an error (see below)
+* calling `CertifyActivityLog::Activity.where({application_id: 1})` will query for all activity log entries for application_id = 1
+* Calling the `.where` method with empty or invalid parameters will result in an error (see below)
 
 #### Creating (POST) Activity Log Entries
 * to create a new activity, the following parameters are required:
@@ -94,14 +94,14 @@ Once created, activity log entries cannot be modified.
 ## Error Handling
 * Calling a Gem method with no or empty parameters, e.g.:
 ```
-CertifyActivityLog::Activity.find   {}
+CertifyActivityLog::Activity.where   {}
 CertifyActivityLog::Activity.create {}
 ```
 will return a bad request:
 `{body: "Bad Request: No parameters submitted", status: 400}`
 * Calling a Gem method with invalid parameters:
 ```
-CertifyActivityLog::Activity.find   {foo: 'bar'}
+CertifyActivityLog::Activity.where   {foo: 'bar'}
 CertifyActivityLog::Activity.create {foo: 'bar'}
 ```
 will return an unprocessable entity error:

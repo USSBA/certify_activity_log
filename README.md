@@ -11,6 +11,7 @@ This is a thin wrapper for the [Certify Activity Log API](https://github.com/SBA
 - [Error Handling](#user-content-error-handling)
 - [Pagination](#user-content-pagination)
 - [Development](#user-content-development)
+- [Changelog](#changelog)
 
 ## Installation
 
@@ -122,3 +123,6 @@ Responses will include pagination information, including the following:
 
 ## Development
 Use `rake console` to access the pry console.  While working in the console, you can run `reload!` to reload any code in the gem so that you do not have to restart the console.
+
+## Changelog
+Refer to the changelog for details on API updates. [CHANGELOG](CHANGELOG.md)

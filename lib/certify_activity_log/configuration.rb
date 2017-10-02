@@ -9,6 +9,7 @@ module CertifyActivityLog
       @activity_api_version = 1
       @path_prefix = "/activity_log"
       @activities_path = "activities"
+      @activities_export_path = "export"
     end
   end
 end

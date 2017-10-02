@@ -22,6 +22,18 @@ module CertifyActivityLog
       create_soft(params)
     end
 
+    def self.export(params = nil)
+      puts params
+
+      return CertifyActivityLog.bad_request if empty_params(params) || params[:application_id].nil?
+      response = connection.request(method: :get,
+                                    path: build_export_activities_path(params))
+      puts response
+      # return_response(response.data[:body]), response.data[:status])
+    rescue Excon::Error => error
+      CertifyActivityLog.service_unavailable error.class
+    end
+
     # create a set of activities with soft validation
     def self.create_soft(params = nil)
       return CertifyActivityLog.bad_request if empty_params(params)
@@ -75,6 +87,10 @@ module CertifyActivityLog
 
     def self.build_create_activities_path
       "#{path_prefix}/#{activities_path}"
+    end
+
+    def self.build_export_activities_path(params)
+      "#{path_prefix}/#{activities_export_path}?#{URI.encode_www_form(params)}"
     end
   end
 end

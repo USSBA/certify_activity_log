@@ -49,6 +49,10 @@ module CertifyActivityLog
       CertifyActivityLog.configuration.activities_path
     end
 
+    def self.activities_export_path
+      CertifyActivityLog.configuration.activities_export_path
+    end
+
     def self.activity_preferences_path
       CertifyActivityLog.configuration.activity_preferences_path
     end

@@ -122,7 +122,12 @@ Responses will include pagination information, including the following:
 - `total_entries`: the total number of items that match the current search
 
 ## Development
-Use `rake console` to access the pry console.  While working in the console, you can run `reload!` to reload any code in the gem so that you do not have to restart the console.
+Use `rake console` to access the pry console.
+To test API calls with the gem within its console, you will need to specify the api url root for the corresponding API:
+```
+CertifyActivityLog.configuration.api_url="http://localhost:3005"
+```
+While working in the console, you can run `reload!` to reload any code in the gem so that you do not have to restart the console.  This should not reset the manual edits to the `configuration` as noted above.
 
 ## Changelog
 Refer to the changelog for details on API updates. [CHANGELOG](CHANGELOG.md)

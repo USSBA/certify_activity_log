@@ -22,14 +22,12 @@ module CertifyActivityLog
       create_soft(params)
     end
 
+    # gem method for accessing the API export method and returning a csv of the data
     def self.export(params = nil)
-      puts params
-
       return CertifyActivityLog.bad_request if empty_params(params) || params[:application_id].nil?
       response = connection.request(method: :get,
                                     path: build_export_activities_path(params))
-      puts response
-      # return_response(response.data[:body]), response.data[:status])
+      return_response(response.data[:body], response.data[:status])
     rescue Excon::Error => error
       CertifyActivityLog.service_unavailable error.class
     end

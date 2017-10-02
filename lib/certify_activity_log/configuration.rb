@@ -1,7 +1,7 @@
 module CertifyActivityLog
   # configuration module
   class Configuration
-    attr_accessor :api_url, :activity_api_version, :path_prefix, :activities_path
+    attr_accessor :api_url, :activity_api_version, :path_prefix, :activities_path, :activities_export_path
 
     # main api endpoint
     def initialize

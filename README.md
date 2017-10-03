@@ -10,6 +10,7 @@ This is a thin wrapper for the [Certify Activity Log API](https://github.com/SBA
     - [Activity Log](#user-content-activity-log)
 - [Error Handling](#user-content-error-handling)
 - [Pagination](#user-content-pagination)
+- [Export Activity Log](#activity-log-export)
 - [Development](#user-content-development)
 - [Changelog](#changelog)
 
@@ -120,6 +121,9 @@ Responses will include pagination information, including the following:
 - `current_page`: the current page number
 - `per_page`: the number of items per page
 - `total_entries`: the total number of items that match the current search
+
+## Export Activity Log
+The gem provides a method for calling the `export` route of the Activity Log API: `CertifyActivityLog::Activity.export`.  At minimum, this method requires that an `application_id` is provided as a parameter.  Providing no parameters or no `application_id` will return a 400 'Bad Request'.  A correctly formatted request will return the API response body which will be a string of the pipe delimited content which can be rendered as `"Content-Type => "text/csv"`.
 
 ## Development
 Use `rake console` to access the pry console.

@@ -51,4 +51,11 @@ module ActivitySpecHelper
       :subtype         => %w[subtype1 subtype2 subtype3].sample,
       :options         => nil }
   end
+
+  def self.mock_activity_csv
+    "id|body|activity_type|event_type|subtype|recipient_id|sender_id|options|application_id|created_at|updated_at\n" \
+    "171|this is bar|application|application_state_change|submitted|||\"{\"\"foo\"\"=>\"\"bar\"\"}\"|3|2017-10-02 18:08:44 UTC|2017-10-02 18:08:44 UTC\n" \
+    "170|this is bar|application|application|created|||\"{\"\"foo\"\"=>\"\"bar\"\"}\"|3|2017-10-02 18:08:44 UTC|2017-10-02 18:08:44 UTC\n" \
+    "169|this is bar|application|message|message_sent|||\"{\"\"foo\"\"=>\"\"bar\"\"}\"|3|2017-10-02 18:08:44 UTC|2017-10-02 18:08:44 UTC\n"
+  end
 end

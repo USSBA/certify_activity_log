@@ -10,6 +10,7 @@ This is a thin wrapper for the [Certify Activity Log API](https://github.com/SBA
     - [Activity Log](#user-content-activity-log)
 - [Error Handling](#user-content-error-handling)
 - [Pagination](#user-content-pagination)
+- [Export Activity Log](#activity-log-export)
 - [Development](#user-content-development)
 - [Changelog](#changelog)
 
@@ -121,8 +122,16 @@ Responses will include pagination information, including the following:
 - `per_page`: the number of items per page
 - `total_entries`: the total number of items that match the current search
 
+## Export Activity Log
+The gem provides a method for calling the `export` route of the Activity Log API: `CertifyActivityLog::Activity.export`.  At minimum, this method requires that an `application_id` is provided as a parameter.  Providing no parameters or no `application_id` will return a 400 'Bad Request'.  A correctly formatted request will return the API response body which will be a string of the pipe delimited content which can be rendered as `"Content-Type => "text/csv"`.
+
 ## Development
-Use `rake console` to access the pry console.  While working in the console, you can run `reload!` to reload any code in the gem so that you do not have to restart the console.
+Use `rake console` to access the pry console.
+To test API calls with the gem within its console, you will need to specify the api url root for the corresponding API:
+```
+CertifyActivityLog.configuration.api_url="http://localhost:3005"
+```
+While working in the console, you can run `reload!` to reload any code in the gem so that you do not have to restart the console.  This should not reset the manual edits to the `configuration` as noted above.
 
 ## Changelog
 Refer to the changelog for details on API updates. [CHANGELOG](CHANGELOG.md)

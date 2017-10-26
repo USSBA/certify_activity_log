@@ -4,8 +4,12 @@ require 'excon'
 module CertifyActivityLog
   # Controls the API connection
   class ApiConnection
-    def initialize(url)
-      @conn = Excon.new(url)
+    attr_accessor :conn
+    def initialize(url, timeout)
+      @conn = Excon.new(url,
+                        connect_timeout: timeout,
+                        read_timeout: timeout,
+                        write_timeout: timeout)
     end
 
     def request(options)
@@ -30,11 +34,15 @@ module CertifyActivityLog
 
     # excon connection
     def self.connection
-      @@connection ||= ApiConnection.new api_url
+      @@connection ||= ApiConnection.new api_url, excon_timeout
     end
 
     def self.clear_connection
       @@connection = nil
+    end
+
+    def self.excon_timeout
+      CertifyActivityLog.configuration.excon_timeout
     end
 
     def self.api_url
@@ -59,6 +67,19 @@ module CertifyActivityLog
 
     def self.activity_log_path
       CertifyActivityLog.configuration.activity_log_path
+    end
+
+    def self.logger
+      CertifyActivityLog.configuration.logger ||= (DefaultLogger.new log_level).logger
+    end
+
+    def self.log_level
+      CertifyActivityLog.configuration.log_level
+    end
+
+    def self.handle_excon_error(error)
+      logger.error [error.message, error.backtrace.join("\n")].join("\n")
+      CertifyActivityLog.service_unavailable error.message
     end
 
     # json parse helper

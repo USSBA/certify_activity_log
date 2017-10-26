@@ -14,7 +14,7 @@ module CertifyActivityLog
                                     path: build_where_activities_path(safe_params))
       return_response(json(response.data[:body]), response.data[:status])
     rescue Excon::Error => error
-      CertifyActivityLog.service_unavailable error.class
+      handle_excon_error(error)
     end
     singleton_class.send(:alias_method, :find, :where)
 
@@ -29,7 +29,7 @@ module CertifyActivityLog
                                     path: build_export_activities_path(params))
       return_response(response.data[:body], response.data[:status])
     rescue Excon::Error => error
-      CertifyActivityLog.service_unavailable error.class
+      handle_excon_error(error)
     end
 
     # create a set of activities with soft validation
@@ -76,7 +76,7 @@ module CertifyActivityLog
                                     headers:  { "Content-Type" => "application/json" })
       return_response(parse_body(response.data[:body]), response.data[:status])
     rescue Excon::Error => error
-      CertifyActivityLog.service_unavailable error.class
+      handle_excon_error(error)
     end
 
     def self.build_where_activities_path(params)

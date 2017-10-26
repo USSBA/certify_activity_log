@@ -83,7 +83,8 @@ RSpec.describe CertifyActivityLog do
       # fake the Excon connection to force it to fail in a test env.
       context "with api not found" do
         let(:activity) { CertifyActivityLog::Activity.create_soft({id: 1}) }
-        let(:error) { described_class.service_unavailable 'Excon::Error::Socket' }
+        let(:error_type) { "SocketError" }
+        let(:error) { described_class.service_unavailable error_type }
 
         before do
           CertifyActivityLog::Resource.clear_connection
@@ -99,7 +100,7 @@ RSpec.describe CertifyActivityLog do
         end
 
         it "will return an error message" do
-          expect(activity[:body]).to eq(error[:body])
+          expect(activity[:body]).to match(/#{error_type}/)
         end
       end
     end

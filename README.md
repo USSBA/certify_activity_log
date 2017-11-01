@@ -9,6 +9,7 @@ This is a thin wrapper for the [Certify Activity Log API](https://github.com/SBA
     - [Configuration](#user-content-configuration)
     - [Activity Log](#user-content-activity-log)
 - [Error Handling](#user-content-error-handling)
+- [Logging](#logging)
 - [Pagination](#user-content-pagination)
 - [Export Activity Log](#activity-log-export)
 - [Development](#user-content-development)
@@ -50,8 +51,11 @@ Set the activity log API URL in your apps `config/initializers` folder, you prob
 CertifyActivityLog.configure do |config|
   config.api_url = "http://localhost:3005"
   config.activity_api_version = 1
+  config.excon_timeout = 5
 end
 ```
+
+With [v1.2.0](CHANGELOG.md#120---2017-11-10), the default Excon API connection timeout was lowered to `20 seconds`. The gem user can also provide a timeout value in seconds as shown above in the `configure` block.  This value is used for the Excon parameters `connect_timeout`, `read_timeout`, and `write_timeout`.
 
 ### Activity Log
 
@@ -95,7 +99,6 @@ Once created, activity log entries cannot be modified.
 
 ## Error Handling
 * Calling a Gem method with no or empty parameters, e.g.:
-```
 CertifyActivityLog::Activity.where   {}
 CertifyActivityLog::Activity.create {}
 ```
@@ -111,8 +114,17 @@ will return an unprocessable entity error:
 * Any other errors that the Gem experiences when connecting to the API will return a service error and the Excon error class:
 `    {body: "Service Unavailable: There was a problem connecting to the activity log API. Type: Excon::Error::Socket", status: 503}`
 
-## Pagination
+## Logging
+Along with returning status error messages for API connection issues, the gem will also log connection errors.  The default behavior for this is to use the built in Ruby `Logger` and honor standard log level protocols.  The default log level is set to `debug` and will output to `STDOUT`.  This can also be configured by the gem user to use the gem consumer application's logger, including the app's environment specific log level.
+```
+# example implementation for a Rails app
+CertifyActivityLog.configure do |config|
+  config.logger = Rails.logger
+  config.log_level = Rails.configuration.log_level
+end
+```
 
+## Pagination
 All lists of activities are paginated by default.  To change the number of items per page, or go to a specific page, include the following optional parameters:
 - `page`: the page requested
 - `per_page`: the number of items to be included on a page
@@ -126,8 +138,7 @@ Responses will include pagination information, including the following:
 The gem provides a method for calling the `export` route of the Activity Log API: `CertifyActivityLog::Activity.export`.  At minimum, this method requires that an `application_id` is provided as a parameter.  Providing no parameters or no `application_id` will return a 400 'Bad Request'.  A correctly formatted request will return the API response body which will be a string of the pipe delimited content which can be rendered as `"Content-Type => "text/csv"`.
 
 ## Development
-Use `rake console` to access the pry console.
-To test API calls with the gem within its console, you will need to specify the api url root for the corresponding API:
+Use `rake console` to access the pry console and add the activity-log API URL to the gem's config to be able to correctly test commands:
 ```
 CertifyActivityLog.configuration.api_url="http://localhost:3005"
 ```

@@ -1,15 +1,18 @@
 module CertifyActivityLog
   # configuration module
   class Configuration
-    attr_accessor :api_url, :activity_api_version, :path_prefix, :activities_path, :activities_export_path
+    attr_accessor :excon_timeout, :api_url, :activity_api_version, :path_prefix, :activities_path, :activities_export_path, :logger, :log_level
 
     # main api endpoint
     def initialize
-      @api_url = nil
+      @excon_timeout = 20
+      @api_url = "http://localhost:3005"
       @activity_api_version = 1
       @path_prefix = "/activity_log"
       @activities_path = "activities"
       @activities_export_path = "export"
+      @log_level = "debug"
+      @logger = nil
     end
   end
 end

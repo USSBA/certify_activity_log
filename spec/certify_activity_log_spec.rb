@@ -13,6 +13,10 @@ RSpec.describe CertifyActivityLog do
     expect(described_class.configuration.activity_api_version).to eq(1)
   end
 
+  it "will have a different excon_timeout than default" do
+    expect(described_class.configuration.excon_timeout).to eq(6)
+  end
+
   it "will have a Activity class" do
     expect(described_class::Activity.new).to be
   end

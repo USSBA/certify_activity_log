@@ -1,7 +1,9 @@
+require "byebug"
 require "certify_activity_log/configuration"
 require "certify_activity_log/error"
 require "certify_activity_log/resource"
 require "certify_activity_log/version"
+require "certify_activity_log/resources/default_logger"
 require "certify_activity_log/resources/activity"
 
 # the base CertifyActivityLog module that wraps all activity log calls

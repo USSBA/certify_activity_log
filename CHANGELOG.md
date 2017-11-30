@@ -3,7 +3,7 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
-## [1.2.1] - 2017-12-08
+## [1.3.0] - 2017-12-08
 ### shared-services-sprint-31
 ### Added
   - HUB-1000

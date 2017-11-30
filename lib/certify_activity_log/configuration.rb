@@ -13,6 +13,7 @@ module CertifyActivityLog
       @activities_export_path = "export"
       @log_level = "debug"
       @logger = nil
+      @column_separator = "|"
     end
   end
 end

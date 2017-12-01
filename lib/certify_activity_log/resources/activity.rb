@@ -88,7 +88,7 @@ module CertifyActivityLog
     end
 
     def self.build_export_activities_path(params)
-      "#{path_prefix}/#{activities_export_path}?#{URI.encode_www_form(params)}"
+      "#{path_prefix}/#{activities_export_path}?column_separator=#{column_separator}&#{URI.encode_www_form(params)}"
     end
   end
 end

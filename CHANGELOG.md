@@ -3,6 +3,10 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+## [1.3.1] - 2018-04-23
+### Changed
+  - Hotfix to actually allow activity_type to be sent to the API
+
 ## [1.3.0] - 2017-12-08
 ### shared-services-sprint-31
 ### Added

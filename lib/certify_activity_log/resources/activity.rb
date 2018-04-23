@@ -55,7 +55,7 @@ module CertifyActivityLog
 
     # helper for white listing parameters
     def self.activity_safe_params(p)
-      permitted_keys = %w[id recipient_id application_id event_type subtype options body page per_page]
+      permitted_keys = %w[id recipient_id application_id activity_type event_type subtype options body page per_page]
       symbolize_params(p.select { |key, _| permitted_keys.include? key.to_s })
     end
 
@@ -88,7 +88,7 @@ module CertifyActivityLog
     end
 
     def self.build_export_activities_path(params)
-      "#{path_prefix}/#{activities_export_path}?#{URI.encode_www_form(params)}"
+      "#{path_prefix}/#{activities_export_path}?column_separator=#{column_separator}&#{URI.encode_www_form(params)}"
     end
   end
 end

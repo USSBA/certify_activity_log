@@ -77,6 +77,10 @@ module CertifyActivityLog
       CertifyActivityLog.configuration.log_level
     end
 
+    def self.column_separator
+      CertifyActivityLog.configuration.column_separator
+    end
+
     def self.handle_excon_error(error)
       logger.error [error.message, error.backtrace.join("\n")].join("\n")
       CertifyActivityLog.service_unavailable error.message

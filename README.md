@@ -97,6 +97,12 @@ Once created, activity log entries cannot be modified.
 * calling `CertifyActivityLog::Activity.where({application_id: 1})` will return all activity log entries for the application with id = 1
 * Calling the `.where` method with empty or invalid parameters will result in an error (see below)
 
+#### Exporting Activity Log as CSV
+* calling `CertifyActivityLog::Activity.export(application_id: 1)` will return a delimited string of the activities
+* the `column_separator` can be configured in `certify_activity_log/configuration.rb`
+** Default is "|". Only one character can be used for delimiting
+
+
 ## Error Handling
 * Calling a Gem method with no or empty parameters, e.g.:
 CertifyActivityLog::Activity.where   {}

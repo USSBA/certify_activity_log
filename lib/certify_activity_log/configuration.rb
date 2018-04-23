@@ -1,7 +1,7 @@
 module CertifyActivityLog
   # configuration module
   class Configuration
-    attr_accessor :excon_timeout, :api_url, :activity_api_version, :path_prefix, :activities_path, :activities_export_path, :logger, :log_level
+    attr_accessor :excon_timeout, :api_url, :activity_api_version, :path_prefix, :activities_path, :activities_export_path, :logger, :log_level, :column_separator
 
     # main api endpoint
     def initialize
@@ -13,6 +13,7 @@ module CertifyActivityLog
       @activities_export_path = "export"
       @log_level = "debug"
       @logger = nil
+      @column_separator = "|"
     end
   end
 end

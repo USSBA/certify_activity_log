@@ -1,6 +1,6 @@
 # CertifyActivityLog
 
-This is a thin wrapper for the [Certify Activity Log API](https://github.com/SBA-ONE/activity-api) to handle basic GET and POST operations for activity log entries.
+This is a thin wrapper for the [Certify Activity Log API](https://github.com/USSBA/activity-api) to handle basic GET and POST operations for activity log entries.
 
 
 #### Table of Contents
@@ -24,7 +24,7 @@ There are two options you can use to install the gem. Building it manually, or i
 Add the following to your Gemfile to bring in the gem from GitHub:
 
 ```
-gem 'certify_activity_log', git: 'git@github.com:SBA-ONE/certify_activity_log.git', branch: 'develop' # Certify activity log service
+gem 'certify_activity_log', git: 'git@github.com:USSBA/certify_activity_log.git', branch: 'develop' # Certify activity log service
 ```
 
 This will pull the head of the develop branch in as a gem.  If there are updates to the gem repository, you will need to run `bundle update certify_activity_log` to get them.
@@ -35,7 +35,7 @@ This will pull the head of the develop branch in as a gem.  If there are updates
 * `bundle install` to build it
 * You can run tests `rspec` to make sure it built okay.
 * Then `rake build` to build the gem, this builds the .gem file in /pkg
-* Jump over to the folder of the the app where you want to use them and follow the instructions below within that app/repo, for example, if working with the [Shared-Services Prototype](https://github.com/SBA-ONE/shared-services-prototype):
+* Jump over to the folder of the the app where you want to use them and follow the instructions below within that app/repo, for example, if working with the [Shared-Services Prototype](https://github.com/USSBA/shared-services-prototype):
   * Copy the .gem into the folder `vendor/gems/certify_activity_log`
   * In the app where you want to use the gem, do `gem install <path to gem>` e.g. `gem install vendor/gems/certify_activity_log/certify_activity_log-0.1.0.gem`
   * add `gem 'certify_activity_log'` to your Gemfile

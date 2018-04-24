@@ -42,6 +42,15 @@ This will pull the head of the develop branch in as a gem.  If there are updates
   * `bundle install`
   * If this worked correctly, you should see `certify_activity_log` in your `Gemfile.lock`
 
+### Artifactory
+
+To relase a new version to artifactory, run the Jenkins job `ss-activity-log-gem-deploy` with the appropriate version tag.
+
+To use the gem from artifactory, add the following to the top of your `Gemfile`:
+```
+source 'http://artifactory.sba-one.net/artifactory/api/gems/gems/'
+```
+
 ## Usage
 
 ### Configuration

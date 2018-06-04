@@ -9,9 +9,13 @@ RSpec.describe CertifyActivityLog do
         let(:activity) { CertifyActivityLog::Activity.create_soft(mock) }
         let(:body) { activity[:body] }
 
-        before do
-          Excon.stub({}, body: mock.to_json, status: 201)
-        end
+        # before do
+        #   mock = ActivitySpecHelper.symbolize activity_mock 
+        #   activity = CertifyActivityLog::Activity.create_soft(mock) 
+        #   body = activity[:body] 
+        #   byebug
+        #   # Excon.stub({}, body: mock.to_json, status: 201)
+        # end
 
         it "will return the correct post response" do
           expect(activity[:status]).to eq(201)

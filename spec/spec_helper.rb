@@ -7,7 +7,7 @@ Dir['./spec/support/**/*.rb'].each { |f| require f }
 
 # configure the CertifyActivityLog module for testing
 CertifyActivityLog.configure do |config|
-  #config.api_url = "http://foo.bar/"
+  # config.api_url = "http://foo.bar/"
   config.excon_timeout = 6
   config.log_level = "unknown"
 end

@@ -1,0 +1,35 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://localhost:3005/activity_log/activities
+    body:
+      encoding: UTF-8
+      string: '{"strict":false,"activities":[{"recipient_id":"8602631382","application_id":"83796","activity_type":"application","event_type":"activity_log_event","subtype":"subtype3","options":null}]}'
+    headers:
+      User-Agent:
+      - excon/0.59.0
+      Content-Type:
+      - application/json
+      Accept:
+      - application/sba.activity-api.v1
+  response:
+    status:
+      code: 400
+      message: 
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Cache-Control:
+      - no-cache
+      X-Request-Id:
+      - 9ddd5c9a-da9e-4ea7-9df7-f82ede9f450d
+      X-Runtime:
+      - '0.017945'
+    body:
+      encoding: ASCII-8BIT
+      string: '{"errors":{"event_type":["invalid event_type activity_log_event for
+        activity type application"]}}'
+    http_version: 
+  recorded_at: Mon, 04 Jun 2018 19:04:31 GMT
+recorded_with: VCR 4.0.0

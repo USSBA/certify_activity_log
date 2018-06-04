@@ -23,8 +23,7 @@ module ActivitySpecHelper
   end
 
   def self.mock_activity_sym
-    { id:             Faker::Number.number(10),
-      recipient_id:   Faker::Number.number(10),
+    { recipient_id:   Faker::Number.number(10),
       application_id: Faker::Number.number(5),
       activity_type:  "application",
       event_type:     %w[activity_log_event].sample,
@@ -33,8 +32,7 @@ module ActivitySpecHelper
   end
 
   def self.mock_activity_string
-    { "id"             => Faker::Number.number(10),
-      "recipient_id"   => Faker::Number.number(10),
+    { "recipient_id"   => Faker::Number.number(10),
       "application_id" => Faker::Number.number(5),
       "activity_type"  => "application",
       "event_type"     => %w[activity_log_event].sample,
@@ -43,8 +41,7 @@ module ActivitySpecHelper
   end
 
   def self.mock_activity_mixed
-    { :id              => Faker::Number.number(10),
-      :recipient_id    => Faker::Number.number(10),
+    { :recipient_id    => Faker::Number.number(10),
       "application_id" => Faker::Number.number(5),
       :activity_type   => "application",
       "event_type"     => %w[activity_log_event].sample,

@@ -22,6 +22,27 @@ RSpec.describe CertifyActivityLog do
         it "will handle being given a string" do
           expect(body["recipient_id"]).to eq(mock[:recipient_id])
         end
+        context "containing all required parameters" do
+          it "will have the activty_type parameter" do
+            expect(activity[:body]["activity_type"]).not_to eq(nil)
+          end
+
+          it "will have the event_type parameter" do
+            expect(activity[:body]["event_type"]).not_to eq(nil)
+          end
+
+          it "will have the subtype parameter" do
+            expect(activity[:body]["subtype"]).not_to eq(nil)
+          end
+
+          it "will have the recipient_id parameter" do
+            expect(activity[:body]["recipient_id"]).not_to eq(nil)
+          end
+
+          it "will have the application_id parameter" do
+            expect(activity[:body]["application_id"]).not_to eq(nil)
+          end
+        end
       end
       context "for creating activities with soft validation" do
         let(:first_activity) { ActivitySpecHelper.symbolize activity_mock }

@@ -7,7 +7,7 @@ Dir['./spec/support/**/*.rb'].each { |f| require f }
 
 # configure the CertifyActivityLog module for testing
 CertifyActivityLog.configure do |config|
-  config.api_url = "http://foo.bar/"
+  #config.api_url = "http://foo.bar/"
   config.excon_timeout = 6
   config.log_level = "unknown"
 end
@@ -20,11 +20,11 @@ RSpec.configure do |config|
     c.syntax = :expect
   end
 
-  config.before(:all) do
-    Excon.defaults[:mock] = true
-    Excon.stub({}, body: { message: 'Fallback stub response' }.to_json, status: 598)
-  end
-  config.after(:each) do
-    Excon.stubs.clear
-  end
+  # config.before(:all) do
+  #   Excon.defaults[:mock] = true
+  #   Excon.stub({}, body: { message: 'Fallback stub response' }.to_json, status: 598)
+  # end
+  # config.after(:each) do
+  #   Excon.stubs.clear
+  # end
 end

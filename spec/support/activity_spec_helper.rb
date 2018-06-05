@@ -1,3 +1,4 @@
+require 'faker'
 # Creates mock hashes to be used in simulating activities
 module ActivitySpecHelper
   def self.json
@@ -23,30 +24,39 @@ module ActivitySpecHelper
   end
 
   def self.mock_activity_sym
-    { recipient_id:   Faker::Number.number(10),
-      application_id: Faker::Number.number(5),
+    { #id:             Faker::Number.number(5), 
+      recipient_id:   238,
+      application_id: 789,
       activity_type:  "application",
-      event_type:     %w[activity_log_event].sample,
-      subtype:        %w[subtype1 subtype2 subtype3].sample,
-      options:        nil }
+      event_type:     %w[application_state_change].sample,
+      subtype:        %w[resubmitted submitted returned].sample,
+      options:        { application_id: :application_id , 
+                        user_id: 1337,
+                        user_name: "Steve Buscemi"}}
   end
 
   def self.mock_activity_string
-    { "recipient_id"   => Faker::Number.number(10),
-      "application_id" => Faker::Number.number(5),
+    { #"id"             => Faker::Number.number(5),
+      "recipient_id"   => 238,
+      "application_id" => 789,
       "activity_type"  => "application",
-      "event_type"     => %w[activity_log_event].sample,
-      "subtype"        => %w[subtype1 subtype2 subtype3].sample,
-      "options"        => nil }
+      "event_type"     => %w[application_state_change].sample,
+      "subtype"        => %w[resubmitted submitted returned].sample,
+      "options"        => { "application_id" => "application_id" , 
+                            "user_id" => 1337,
+                            "user_name" => "Steve Buscemi" }}
   end
 
   def self.mock_activity_mixed
-    { :recipient_id    => Faker::Number.number(10),
-      "application_id" => Faker::Number.number(5),
+    { #:id              => Faker::Number.number(5),
+      :recipient_id    => 238,
+      "application_id" => 789,
       :activity_type   => "application",
-      "event_type"     => %w[activity_log_event].sample,
-      :subtype         => %w[subtype1 subtype2 subtype3].sample,
-      :options         => nil }
+      "event_type"     => %w[application_state_change].sample,
+      :subtype         => %w[resubmitted submitted returned].sample,
+      :options         => { application_id: "application_id",  
+                            user_id: 1337,
+                            user_name: "Steve Buscemi" } }
   end
 
   def self.mock_activity_csv

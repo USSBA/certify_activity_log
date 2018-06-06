@@ -52,6 +52,17 @@ module ActivitySpecHelper
       :options         => nil }
   end
 
+  def self.real_activity
+    { recipient_id:   1234,
+      application_id: 23521,
+      activity_type:  "application",
+      event_type:     %w[application_state_change].sample,
+      subtype:        %w[submitted resubmitted returned].sample,
+      options:        {  application_id:  5037,
+                         user_id:         4521,
+                         user_name:       'France Herbelschtein'}}
+  end
+
   def self.mock_activity_csv
     "id|body|activity_type|event_type|subtype|recipient_id|sender_id|options|application_id|created_at|updated_at\n" \
     "171|this is bar|application|application_state_change|submitted|||\"{\"\"foo\"\"=>\"\"bar\"\"}\"|3|2017-10-02 18:08:44 UTC|2017-10-02 18:08:44 UTC\n" \

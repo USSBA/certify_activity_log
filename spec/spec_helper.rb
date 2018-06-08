@@ -21,6 +21,8 @@ RSpec.configure do |config|
   end
 
   config.before(:all) do
+    CertifyActivityLog::Resource.clear_connection
+    Excon.stubs.clear
     Excon.defaults[:mock] = true
     Excon.stub({}, body: { message: 'Fallback stub response' }.to_json, status: 598)
   end

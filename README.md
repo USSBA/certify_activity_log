@@ -13,11 +13,21 @@ This is a thin wrapper for the [Certify Activity Log API](https://github.com/USS
 - [Pagination](#user-content-pagination)
 - [Export Activity Log](#activity-log-export)
 - [Development](#user-content-development)
+- [Publishing](#user-content-publishing)
 - [Changelog](#changelog)
 
 ## Installation
 
-There are two options you can use to install the gem. Building it manually, or installing from GitHub.
+There are three options you can use to install the gem. Pulling from the private sba-one gem server, building it manually, or installing directly from GitHub.
+
+### Pulling from private geminabox (preferred)
+
+Ensure you have the credentials configured with bundler, then add the following to your Gemfile:
+```
+source 'https://<domain-of-our-private-gem-server>/' do
+  gem 'certify_activity_log'
+end
+```
 
 ### Install from GitHub
 
@@ -158,6 +168,15 @@ Use `rake console` to access the pry console and add the activity-log API URL to
 CertifyActivityLog.configuration.api_url="http://localhost:3005"
 ```
 While working in the console, you can run `reload!` to reload any code in the gem so that you do not have to restart the console.  This should not reset the manual edits to the `configuration` as noted above.
+
+## Publishing
+To release a new version:
+
+  1. Bump the version in lib/\*/version.rb
+  1. Merge into `master` (optional)
+  1. Push a tag to GitHub in the form: `X.Y.Z` or `X.Y.Z.pre.myPreReleaseTag`
+
+At this point, our CI process will kick-off, run the tests, and push the built gem into our Private Gem server.
 
 ## Changelog
 Refer to the changelog for details on API updates. [CHANGELOG](CHANGELOG.md)

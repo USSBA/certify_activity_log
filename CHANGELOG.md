@@ -1,7 +1,11 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
-## [Unreleased]
+## [1.3.2] - 2018-09-14
+### shared-services-sprint-51
+### Changed
+  - HUB-1583
+    - version bump for deployment to geminabox
 
 ## [1.3.1] - 2018-04-23
 ### Changed

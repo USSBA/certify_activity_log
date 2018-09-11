@@ -52,14 +52,30 @@ This will pull the head of the develop branch in as a gem.  If there are updates
   * `bundle install`
   * If this worked correctly, you should see `certify_activity_log` in your `Gemfile.lock`
 
-### Artifactory
+### GemInABox
 
-To relase a new version to artifactory, run the Jenkins job `ss-activity-log-gem-deploy` with the appropriate version tag.
+Having acquired the readtoken to the SBA geminabox server, add it to your bundle config via `bundle config geminabox.sba-one.net readtoken:readtoken`.
 
-To use the gem from artifactory, add the following to the top of your `Gemfile`:
+To relase a new version to geminabox, simply tag the repository with a tag in the form vX.Y.Z.  This will trigger an AWS CodeBuild process to build and deploy the gem to geminabox.
+
+To use the gem from geminabox, add the following to your `Gemfile`:
 ```
-source 'http://artifactory.sba-one.net/artifactory/api/gems/gems/'
+group :ussba, :default do
+  source 'https://geminabox.sba-one.net/' do
+    gem 'certify_activity_log'
+  end
+end
 ```
+
+### Install gem from GitHub
+
+Alternatively, you can add the following to your Gemfile to bring in the gem from GitHub:
+
+```
+gem 'certify_activity_log', git: 'git@github.com:USSBA/certify_activity_log.git', branch: 'develop' # Certify activity log service
+```
+
+This will pull the head of the develop branch in as a gem.  If there are updates to the gem repository, you will need to run `bundle update certify_activity_log` to get them.
 
 ## Usage
 

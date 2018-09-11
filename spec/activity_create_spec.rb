@@ -1,4 +1,5 @@
 require "spec_helper"
+require "certify_activity_log"
 
 #rubocop:disable Style/BracesAroundHashParameters, Metrics/BlockLength
 RSpec.describe CertifyActivityLog do

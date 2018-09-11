@@ -1,6 +1,6 @@
 # CertifyActivityLog
 
-This is a thin wrapper for the [Certify Activity Log API](https://github.com/SBA-ONE/activity-api) to handle basic GET and POST operations for activity log entries.
+This is a thin wrapper for the [Certify Activity Log API](https://github.com/USSBA/activity-api) to handle basic GET and POST operations for activity log entries.
 
 
 #### Table of Contents
@@ -13,18 +13,28 @@ This is a thin wrapper for the [Certify Activity Log API](https://github.com/SBA
 - [Pagination](#user-content-pagination)
 - [Export Activity Log](#activity-log-export)
 - [Development](#user-content-development)
+- [Publishing](#user-content-publishing)
 - [Changelog](#changelog)
 
 ## Installation
 
-There are two options you can use to install the gem. Building it manually, or installing from GitHub.
+There are three options you can use to install the gem. Pulling from the private sba-one gem server, building it manually, or installing directly from GitHub.
+
+### Pulling from private geminabox (preferred)
+
+Ensure you have the credentials configured with bundler, then add the following to your Gemfile:
+```
+source 'https://<domain-of-our-private-gem-server>/' do
+  gem 'certify_activity_log'
+end
+```
 
 ### Install from GitHub
 
 Add the following to your Gemfile to bring in the gem from GitHub:
 
 ```
-gem 'certify_activity_log', git: 'git@github.com:SBA-ONE/certify_activity_log.git', branch: 'develop' # Certify activity log service
+gem 'certify_activity_log', git: 'git@github.com:USSBA/certify_activity_log.git', branch: 'develop' # Certify activity log service
 ```
 
 This will pull the head of the develop branch in as a gem.  If there are updates to the gem repository, you will need to run `bundle update certify_activity_log` to get them.
@@ -35,12 +45,21 @@ This will pull the head of the develop branch in as a gem.  If there are updates
 * `bundle install` to build it
 * You can run tests `rspec` to make sure it built okay.
 * Then `rake build` to build the gem, this builds the .gem file in /pkg
-* Jump over to the folder of the the app where you want to use them and follow the instructions below within that app/repo, for example, if working with the [Shared-Services Prototype](https://github.com/SBA-ONE/shared-services-prototype):
+* Jump over to the folder of the the app where you want to use them and follow the instructions below within that app/repo, for example, if working with the [Shared-Services Prototype](https://github.com/USSBA/shared-services-prototype):
   * Copy the .gem into the folder `vendor/gems/certify_activity_log`
   * In the app where you want to use the gem, do `gem install <path to gem>` e.g. `gem install vendor/gems/certify_activity_log/certify_activity_log-0.1.0.gem`
   * add `gem 'certify_activity_log'` to your Gemfile
   * `bundle install`
   * If this worked correctly, you should see `certify_activity_log` in your `Gemfile.lock`
+
+### Artifactory
+
+To relase a new version to artifactory, run the Jenkins job `ss-activity-log-gem-deploy` with the appropriate version tag.
+
+To use the gem from artifactory, add the following to the top of your `Gemfile`:
+```
+source 'http://artifactory.sba-one.net/artifactory/api/gems/gems/'
+```
 
 ## Usage
 
@@ -149,6 +168,15 @@ Use `rake console` to access the pry console and add the activity-log API URL to
 CertifyActivityLog.configuration.api_url="http://localhost:3005"
 ```
 While working in the console, you can run `reload!` to reload any code in the gem so that you do not have to restart the console.  This should not reset the manual edits to the `configuration` as noted above.
+
+## Publishing
+To release a new version:
+
+  1. Bump the version in lib/\*/version.rb
+  1. Merge into `master` (optional)
+  1. Push a tag to GitHub in the form: `X.Y.Z` or `X.Y.Z.pre.myPreReleaseTag`
+
+At this point, our CI process will kick-off, run the tests, and push the built gem into our Private Gem server.
 
 ## Changelog
 Refer to the changelog for details on API updates. [CHANGELOG](CHANGELOG.md)

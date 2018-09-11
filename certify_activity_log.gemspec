@@ -41,6 +41,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "rubocop"
   spec.add_development_dependency "rubocop-rspec"
   spec.add_development_dependency "simplecov"
+  spec.add_development_dependency "vcr"
 
   spec.add_dependency "excon"
   spec.add_dependency "excon-rails"

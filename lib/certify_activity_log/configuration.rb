@@ -1,11 +1,12 @@
 module CertifyActivityLog
   # configuration module
   class Configuration
-    attr_accessor :excon_timeout, :api_url, :activity_api_version, :path_prefix, :activities_path, :activities_export_path, :logger, :log_level, :column_separator
+    attr_accessor :excon_timeout, :api_key, :api_url, :activity_api_version, :path_prefix, :activities_path, :activities_export_path, :logger, :log_level, :column_separator
 
     # main api endpoint
     def initialize
       @excon_timeout = 20
+      @api_key = "fake_api_key" #TODO: set to nil once we start using API Gateways
       @api_url = "http://localhost:3005"
       @activity_api_version = 1
       @path_prefix = "/activity_log"

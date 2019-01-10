@@ -56,6 +56,10 @@ module CertifyActivityLog
       CertifyActivityLog.configuration.api_url
     end
 
+    def self.activity_api_version
+      CertifyActivityLog.configuration.activity_api_version
+    end
+
     def self.path_prefix
       CertifyActivityLog.configuration.path_prefix
     end

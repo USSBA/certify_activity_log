@@ -24,7 +24,7 @@ module CertifyActivityLog
 
     # gem method for accessing the API export method and returning a csv of the data
     def self.export(params = nil)
-      return CertifyActivityLog.bad_request if empty_params(params) || params[:application_id].nil?
+      return CertifyActivityLog.bad_request if empty_params(params) || application_param(params).nil?
       response = connection.request(method: :get,
                                     path: build_export_activities_path(params))
       return_response(response.data[:body], response.data[:status])
@@ -48,6 +48,17 @@ module CertifyActivityLog
 
     private_class_method
 
+    def self.version_specific_keys
+      case activity_api_version
+      when 1
+        %w[sender_id recipient_id application_id]
+      when 2
+        %w[sender_uuid recipient_uuid application_id]
+      when 3
+        %w[sender_uuid recipient_uuid application_uuid]
+      end
+    end
+
     # returns the body as a parsed JSON hash, or as a simple hash if nil
     def self.parse_body(body)
       body.empty? ? { message: 'No Content' } : json(body)
@@ -55,8 +66,18 @@ module CertifyActivityLog
 
     # helper for white listing parameters
     def self.activity_safe_params(p)
-      permitted_keys = %w[id recipient_id application_id activity_type event_type subtype options body page per_page]
+      permitted_keys = %w[id activity_type event_type subtype options body page per_page]
+      permitted_keys.push(*version_specific_keys)
       symbolize_params(p.select { |key, _| permitted_keys.include? key.to_s })
+    end
+
+    def self.application_param(p)
+      case activity_api_version
+      when 1, 2
+        p[:application_id]
+      when 3
+        p[:application_uuid]
+      end
     end
 
     def self.activity_create_safe_param(strict, p)

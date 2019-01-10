@@ -3,6 +3,11 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+## [1.4.0] - 2019-01-18
+### shared-services-sprint-60
+### Changed
+  - Activity resource supports v1, v2, and v3 of activity API
+    
 ## [1.3.1] - 2018-04-23
 ### Changed
   - Hotfix to actually allow activity_type to be sent to the API

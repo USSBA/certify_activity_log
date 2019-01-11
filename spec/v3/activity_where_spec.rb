@@ -43,7 +43,7 @@ module V2
       end
 
       context "with bad parameters" do
-        let(:activities) { CertifyActivityLog::Activity.where({foo: 'bar'}) }
+        let(:activities) { CertifyActivityLog::Activity.where({application_id: 1}) }
         let(:body) { activities[:body] }
 
         it "will return an error message when a bad parameter is sent" do

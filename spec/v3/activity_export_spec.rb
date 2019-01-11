@@ -38,8 +38,8 @@ module V3
         end
       end
 
-      context "with bad parameters" do
-        let(:activities) { CertifyActivityLog::Activity.export({foo: 'bar'}) }
+      context "with a bad parameter" do
+        let(:activities) { CertifyActivityLog::Activity.export({application_id: 1}) }
         let(:body) { activities[:body] }
 
         it "will return an error message when a bad parameter is sent" do

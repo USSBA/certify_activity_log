@@ -39,7 +39,7 @@ module V2
       end
 
       context "with bad parameters" do
-        let(:activities) { CertifyActivityLog::Activity.export({foo: 'bar'}) }
+        let(:activities) { CertifyActivityLog::Activity.export({application_uuid: 'foo'}) }
         let(:body) { activities[:body] }
 
         it "will return an error message when a bad parameter is sent" do

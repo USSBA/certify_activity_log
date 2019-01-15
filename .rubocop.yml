@@ -40,6 +40,3 @@ Style/NumericLiterals:
 
 Style/StringLiterals:
   Enabled: false
-
-RSpec/ContextWording:
-  Enabled: false

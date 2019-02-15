@@ -1,10 +1,10 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
-## [1.5.0] - 2019-01-18
-### shared-services-sprint-60
+## [1.5.1] - 2019-02-28
+### shared-services-sprint-63
 ### Changed
-  - Activity resource supports v1, v2, and v3 of activity API
+  - Prepped code base for open source
     
 ## [1.4.0] - 2018-09-30
 ### shared-services-sprint-52

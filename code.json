@@ -1,5 +1,5 @@
 {
-  "version": "1.5.0",
+  "version": "2.0.0",
   "measurementType": {
     "method": "projects"
   },
@@ -28,7 +28,7 @@
         "email": "Beau.Houser@sba.gov"
       },
       "repositoryURL": "https://github.com/USSBA/certify_activity_log",
-      "laborHours": 3980,
+      "laborHours": 1390,
       "vcs": "git"
     }
   ]

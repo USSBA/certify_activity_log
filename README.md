@@ -39,18 +39,13 @@ gem 'certify_activity_log', git: 'git@github.com:USSBA/certify_activity_log.git'
 
 This will pull the head of the develop branch in as a gem.  If there are updates to the gem repository, you will need to run `bundle update certify_activity_log` to get them.
 
-### Building it manually
+### Using it locally
 
-* Pull down the latest branch for the gem
-* `bundle install` to build it
-* You can run tests `rspec` to make sure it built okay.
-* Then `rake build` to build the gem, this builds the .gem file in /pkg
-* Jump over to the folder of the the app where you want to use them and follow the instructions below within that app/repo, for example, if working with the [Shared-Services Prototype](https://github.com/USSBA/shared-services-prototype):
-  * Copy the .gem into the folder `vendor/gems/certify_activity_log`
-  * In the app where you want to use the gem, do `gem install <path to gem>` e.g. `gem install vendor/gems/certify_activity_log/certify_activity_log-0.1.0.gem`
-  * add `gem 'certify_activity_log'` to your Gemfile
-  * `bundle install`
-  * If this worked correctly, you should see `certify_activity_log` in your `Gemfile.lock`
+* Clone this repository
+* Add it ot the Gemfile with the path:
+```
+gem 'certify_activity_log, path: '<path-to-the-gem-on-your-system>'
+```
 
 ### GemInABox
 
@@ -80,7 +75,7 @@ This will pull the head of the develop branch in as a gem.  If there are updates
 ## Usage
 
 ### Configuration
-Set the activity log API URL in your apps `config/initializers` folder, you probably also want to include an `activity_log.yml` under `config` to be able to specify the URL based on your environment.
+Within the host application, set the Certify application log API URL in `config/initializers`; you probably also want to include a `activity_log.yml` under `config` to be able to specify the URL based on your environment.
 
 ```
 CertifyActivityLog.configure do |config|

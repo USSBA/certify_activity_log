@@ -205,7 +205,7 @@ We welcome contributions. Please read [CONTRIBUTING](CONTRIBUTING.md) for how to
 
 ### Code Of Conduct
 
-We strive for a welcoming and inclusive environment for the Activity-Api project.
+We strive for a welcoming and inclusive environment for the Certify Activity project.
 
 Please follow this guidelines in all interactions:
 

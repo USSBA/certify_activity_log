@@ -14,6 +14,7 @@ This is a thin wrapper for the [Certify Activity Log API](https://github.com/USS
 - [Export Activity Log](#activity-log-export)
 - [Development](#user-content-development)
 - [Publishing](#user-content-publishing)
+- [Tests](#tests)
 - [Changelog](#changelog)
 - [License](#license)
 - [Contributing](#contributing)

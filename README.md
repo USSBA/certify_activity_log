@@ -15,6 +15,10 @@ This is a thin wrapper for the [Certify Activity Log API](https://github.com/USS
 - [Development](#user-content-development)
 - [Publishing](#user-content-publishing)
 - [Changelog](#changelog)
+- [License](#license)
+- [Contributing](#contributing)
+  - [Code of Conduct](#code-of-conduct)
+- [Security Issues](#security-issues)
 
 ## Installation
 
@@ -229,7 +233,7 @@ Poirot will return an error status if it finds any secrets in the commit history
 Refer to the changelog for details on API updates. [CHANGELOG](CHANGELOG.md)
 
 ## License
-The Activity-Api is licensed permissively under the Apache License v2.0.
+Certify Activity is licensed permissively under the Apache License v2.0.
 A copy of that license is distributed with this software.
 
 ## Contributing

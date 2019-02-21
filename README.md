@@ -58,7 +58,7 @@ The `api_key` is currently unused, but we anticipate adding in an API Gateway la
 With [v1.2.0](CHANGELOG.md#120---2017-11-10), the default Excon API connection timeout was lowered to `20 seconds`. The gem user can also provide a timeout value in seconds as shown above in the `configure` block.  This value is used for the Excon parameters `connect_timeout`, `read_timeout`, and `write_timeout`.
 
 ## Methods
-Refer to the [Certify Activity Log API](https://github.com/USSBA/activity-log-api) for more complete documentation and detailed examples of method responses.
+Refer to the [Certify Activity Log API](https://github.com/USSBA/activity-api) for more complete documentation and detailed examples of method responses.
 
 Note: The Activity Log API has multiple versions that support different parameters. For example, v3 may require an `application_uuid` instead of an `application_id`. Refer to the API documentation to know which parameters to use depending on the version.
 
@@ -67,7 +67,6 @@ Note: The Activity Log API has multiple versions that support different paramete
 | ------ | ----------- |
 | `CertifyActivityLog::Activity.where({application_id: 1})` | Query for all activity log entries |
 | `CertifyActivityLog::Activity.create({ activity_type: <string>, event_type: <string>, subtype: <string>, recipient_id: <int>, application_id <int>, options: <hash> })` | Create a new activity log entry. Refer to https://github.com/USSBA/activity-api/ for valid `activity_type`, `event_type`, `subtype`, and `options` values |
-| `CertifyActivityLog::Activity.where({application_id: 1})` | Get all activity log entries by application_id |
 | `CertifyActivityLog::Activity.export(application_id: 1)` | Get a delimited string of activities. The `column_separator` can be configured in `certify_activity_log/configuration.rb`. The default is `|` |
 
 ## Pagination

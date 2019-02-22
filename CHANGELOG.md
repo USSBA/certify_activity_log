@@ -6,6 +6,8 @@ All notable changes to this project will be documented in this file.
 ### Changed
   - HUB-1821
     - Updates documentation
+  - HUB-1828
+    - Prepped code base for open source
 
 ## [1.5.0] - 2019-01-18
 ### shared-services-sprint-60

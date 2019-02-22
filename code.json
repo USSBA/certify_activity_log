@@ -1,0 +1,35 @@
+{
+  "version": "2.0.0",
+  "measurementType": {
+    "method": "projects"
+  },
+  "agency": "SBA",
+  "releases": [
+    {
+      "name": "Certify Activity Log",
+      "description": "SBA Certify Activity Log gem is a thin wrapper for the [Certify Activity Log API](https://github.com/USSBA/activity-api) to handle basic GET and POST operations for activity log entries.",
+      "permissions": {
+        "licenses": [
+          {
+            "name": "Apache License 2.0",
+            "URL": "https://www.apache.org/licenses/LICENSE-2.0.html"
+          }
+        ],
+        "usageType": "openSource",
+        "exemptionText": null
+      },
+      "tags": [
+        "SBA",
+        "Certify",
+        "Rails",
+        "Activity Log"
+      ],
+      "contact": {
+        "email": "Beau.Houser@sba.gov"
+      },
+      "repositoryURL": "https://github.com/USSBA/certify_activity_log",
+      "laborHours": 460,
+      "vcs": "git"
+    }
+  ]
+}
